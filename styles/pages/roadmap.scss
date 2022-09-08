@@ -1,0 +1,90 @@
+.roadmap-container {
+  width: 1200px;
+  max-width: calc(100% - 40px);
+  margin: 0 auto;
+
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 40px;
+
+  font-family: 'Poppins', sans-serif;
+
+  .roadmap-title {
+    font-size: clamp(3rem, 10vw, 100px);
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .roadmap-paragraph {
+    font-size: clamp(16px, 3vw, 24px);
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .roadmap-form {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    .roadmap-input {
+      flex: 8;
+      border-radius: 4px;
+      box-shadow: none;
+
+      border: 1px solid #d8d8d8;
+      &:focus,
+      &:active {
+        border-color: #343434;
+      }
+    }
+
+    .roadmap-input,
+    .roadmap-button {
+      padding: 24px;
+    }
+
+    .roadmap-button {
+      flex: 2;
+      color: white;
+      background: linear-gradient(180deg, #0057ff 0%, #0d5dfd 100%);
+
+      border-radius: 4px;
+      border: none;
+      font-size: 20px;
+      transition: all 0.3s ease-in-out;
+
+      &:hover,
+      &:focus {
+        box-shadow: 0px 3px 6px rgba(24, 119, 242, 0.12), 0px 6px 16px rgba(24, 119, 242, 0.08),
+          0px 9px 28px rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  .subscribers-container {
+    display: flex;
+    gap: 12px;
+
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    .subscribers-avatars {
+      svg {
+        background-color: white;
+        border: 4px solid white;
+        border-radius: 100%;
+        &:not(:first-of-type) {
+          margin-left: -10px;
+        }
+      }
+    }
+    .subscribers-counter {
+      font-weight: bold;
+    }
+  }
+}
