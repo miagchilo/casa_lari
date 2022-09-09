@@ -21,7 +21,7 @@ const Home: NextPage = () => {
           </div>
           <section className="section about-image">
             <div className="image">
-              <Image src={'/images/home2.jpg'} objectFit="cover" layout="fill" />
+              <Image src={'/images/home2.jpg'} objectFit="cover" layout="fill" alt='web developer standing an the ofice table with trandy glasses' />
            
             </div>
           </section>
