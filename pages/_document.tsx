@@ -4,8 +4,8 @@ export default function Document() {
   const isProduction = process.env.NODE_ENV === 'production';
 
   return (
-    <Html lang="en" title='portfolio'>
-      <Head>
+    <Html lang='en' title='portfolio'>
+      <Head title='portfolio'  lang='en'>
         {/* We only want to add the scripts if in production */}
         {isProduction && (
           <>
