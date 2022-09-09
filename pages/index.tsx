@@ -28,7 +28,7 @@ const Home: NextPage = () => {
           <section className="section about-text">
             <AnimatedParagraph
               paragraph="I’m  Front End developer, content creator , do Creative Front End development,
-      and appreciate polished web design pieces. I also bake in free time."
+      and appreciate polished web design pieces."
             />
           </section>
 

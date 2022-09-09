@@ -9,7 +9,6 @@ export default function HomeCover() {
       <AnimatedTitle text="Creative" />
       <AnimatedTitle text="Developer" />
 
-      {/* <Reel src={'https://player.vimeo.com/video/477735526?background=1'} /> */}
     </div>
   );
 }
