@@ -1,0 +1,8 @@
+query PicturesInterior {
+  picturesInterior {
+    picture {
+      url
+    }
+    alt
+  }
+}

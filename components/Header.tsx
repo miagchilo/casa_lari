@@ -17,19 +17,11 @@ export default function Header() {
   return (
     <div className="nav-bar">
       <div className="nav-bar-left">
-        <motion.h6 variants={variants} initial="initial" animate="animate">
-          stas miagchilo
-        </motion.h6>
-        <motion.h6 variants={variants} initial="initial" animate="animate">
-          Currently Student <br />  at Harbour space
-        </motion.h6>
+        <motion.img className="nav-bar-img" variants={variants}  src={'/images/CasaLari.png'} initial="initial" animate="animate"/>
         <motion.h6 variants={variants} initial="initial" animate="animate">
           Based in <br /> Barcelona
         </motion.h6>
       </div>
-      <motion.h6 className="nav-bar-right" variants={variants} initial="initial" animate="animate">
-        menu ( fake )
-      </motion.h6>
     </div>
   );
 }

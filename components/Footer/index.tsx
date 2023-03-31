@@ -14,12 +14,9 @@ export default function Footer() {
         <a href="https://instagram.com/miagchilo" target="_blank" rel="noopener noreferrer">
           Instagram
         </a>
-        <a href="https://github.com/miagchilo" target="_blank" rel="noopener noreferrer">
-          Github
-        </a>
+      
       </div>
 
-      <h6>({year}), all rights reserved</h6>
     </footer>
   );
 }

@@ -3,17 +3,31 @@ import Image from 'next/image';
 import HomeCover from '../components/HomeCover';
 import ScrollIndicator from '../components/ScrollIndicator';
 import Footer from '../components/Footer';
-import AnimatedParagraph from '../components/AnimatedParagraph';
-import { useState } from 'react';
-import HomeLoader from '../components/HomeLoader';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion'
+import { request } from 'graphql-request';
+import { sdk } from '../lib/client';
+import { PicturesInteriorQuery } from '../generated/graphql';
+import SplitText from '../hooks/useSplitText'
 
 const Home: NextPage = () => {
   const [loader, setLoader] = useState(true);
+  const [picturesInterior, setPicturesInterior] = useState<PicturesInteriorQuery['picturesInterior'] | null>(null);
 
+  useEffect(() => {
+    const fetchPictures = async () => {
+      const res = await sdk.PicturesInterior()
+      
+      setPicturesInterior(res.picturesInterior);
+      setLoader(false);
+    };
+
+    fetchPictures();
+  }, []);
   return (
     <>
-      <HomeLoader setLoader={setLoader} title="miagchilo" />
-      {!loader && (
+    
+  
         <div className="home-container">
           <div className="home-hero">
             <HomeCover />
@@ -21,26 +35,55 @@ const Home: NextPage = () => {
           </div>
           <section className="section about-image">
             <div className="image">
-              <Image src={'/images/home2.jpg'} objectFit="cover" layout="fill" alt='web developer standing an the ofice table with trandy glasses' />
+              <motion.img className='hero' src={'/images/casa_lari_7.jpg'}  alt='hero' />
+        
            
             </div>
           </section>
           <section className="section about-text">
-            <AnimatedParagraph
-              paragraph="I’m  Front End developer, content creator , do Creative Front End development,
-      and appreciate polished web design pieces."
-            />
+            <AnimatePresence>
+              <motion.div className='paragraph'
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}>
+          <SplitText
+                initial={{ y: '100%' }}
+                animate="visible"
+                variants={{
+                  visible: i => ({
+                    y: 0,
+                    transition: {
+                      delay: i * 0.1
+                    }
+                  })
+                }}
+              >
+                Lari Casa is a luxury interior design studio based in Barcelona, dedicated to creating exceptional and sophisticated spaces that are tailored to each client's unique vision and lifestyle. 
+              </SplitText></motion.div> </AnimatePresence>
           </section>
 
-          {/* <section className="section">
-                <h1>Projects</h1>
+          <section className="section">
+                
+                <div className='projects'>
+                {picturesInterior?.map(({picture, alt}, index) => (
+                <motion.img
+                  key={index}
+                  style={{ maxWidth: 300, height: 'auto' }}
+                  src={picture?.url}
+                  alt={alt || ''}
+                />
+              ))}
+                </div>
+                <div className="images">
+        
+          </div>
 
-                <p>Placeholder for some sort of webgl based images/sliders/grid</p>
-              </section> */}
+    
+              </section>
 
           <Footer />
         </div>
-      )}
+      
     </>
   );
 };
